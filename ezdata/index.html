@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta aframe-injected="" name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,shrink-to-fit=no,user-scalable=no,minimal-ui,viewport-fit=cover"><meta aframe-injected="" name="mobile-web-app-capable" content="yes"><meta aframe-injected="" name="theme-color" content="black"><script type="text/javascript" src="/___vscode_livepreview_injected_script"></script>
+
+    <title>Slider Example</title>
+    <style>
+      #square {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  </head>
+  <body>
+    
+    <div style="position: absolute; z-index: 1;">
+    <a-scene  vr-mode-ui="enabled: false" arjs ="debugUIEnabled: false">
+      <a-marker project='visAR' id='item' type='pattern' url='../assets/patterns/letterA.patt'>
+        <a-gltf-model position="1 0 0" scale="0.05 0.05 0.05" look-at="[camera]" id="model-item" project='visAR'  src = '../assets/models/pikachu.glb'></a-gltf-model>
+      </a-marker>
+
+    <a-entity camera></a-entity>
+    </a-scene>
+    </div>
+
+    <div style="position: absolute; z-index: 2; left: 20px; top: 20px;">
+    <input type="range" min="0" max="255" value="100" id="slider">
+    <!--<div id="square"></div>-->
+
+    <div style="position: absolute; z-index: 3; left: 10px; top: 20px;">
+      <p id="test-input">?</p>
+    </div>
+
+    <script>
+      const slider = document.getElementById("slider");
+      //const square = document.getElementById("square");
+      const model = document.getElementById("model-item");
+      //const model = document.querySelector('#item');
+      //model.setAttribute('scale', {x: .25, y: .01, z: .01});
+      console.log('model scale = ' + model.getAttribute('scale'))
+      console.log('model scale.x = ' + model.getAttribute('scale').x)
+      console.log('model scale.y = ' + model.getAttribute('scale').y)
+      console.log('model scale.z = ' + model.getAttribute('scale').z)
+      console.log('model position = ' + model.getAttribute('position'))
+      //console.log('model position.x = ' + model.getAttribute('position').x)
+      
+
+      slider.addEventListener("input", () => {
+        const value = slider.value;
+        //square.style.width = `${value}px`;
+        //square.style.height = `${value}px`;
+        //model.setAttribute('scale', {x: slider.value/1000.0, y: .05, z: .05});
+        //console.log("model.. " + model.data);
+        console.log("slider.val = " + slider.value);
+      });
+      
+      var intervalID;
+      const inputvalText = document.getElementById("test-input");
+      inputvalText.textContent = '???';
+
+      function getEzData() {
+          //console.log('GET request.. ');
+
+          //const href = window.location.href; // Get the current URL
+          const queryString = window.location;
+          const hrefParams = new URLSearchParams(queryString.search); // Parse the query string from the URL
+          //console.log('hrefParams = ' + hrefParams);
+          const token = hrefParams.get('token'); // Get the value of the 'token' parameter
+          //console.log('token = ' + token); // Print the value of the 'token' parameter
+          const topic = hrefParams.get('topic'); 
+          //console.log('topic = ' + topic);
+          //const data = {foo: 'bar'}; // The data to be sent in the request
+          const url = 'https://ezdata.m5stack.com/api/store/' + 
+              //0mxjLuu5xPpCeBzBji8kSQE73PSXLlrj/inputval/
+              token + '/' + topic + '/'; // The URL of the API endpoint
+
+          fetch(url, {
+              //method: 'POST',
+              method: 'GET',
+              headers: {
+                  'Content-Type': 'application/json'
+              }
+              //, body: JSON.stringify(data)
+          })
+          .then(response => response.json())
+          .then(json => {
+          if (json.status === 1) {
+              console.log(json.data); // Print the "data" value
+              var value = json.data;
+              inputvalText.textContent = topic + " = " + value;
+              //square.style.width = `${value}px`;
+              //square.style.height = `${value}px`;
+              slider.value = value;
+              var modelScale = value / 1000.0;
+              model.setAttribute('scale', {x: modelScale, y: modelScale, z: modelScale});
+          } else {
+              console.log('Error:', json.error);
+          }
+          })
+          .catch(error => {
+          console.error('Error:', error);
+          });
+        }
+        
+        function repeatEverySecond() {
+            intervalID = setInterval(repeatFunction, 1000);
+        }
+
+        function repeatFunction() {
+            //console.log('one second..');
+            getEzData();
+        }
+
+        repeatEverySecond();
+      
+    </script>
+    </div>
+  </body>
+</html>

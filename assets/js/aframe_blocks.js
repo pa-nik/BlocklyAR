@@ -113,9 +113,11 @@ Blockly.defineBlocksWithJsonArray([
                 type: "field_dropdown",
                 name: "src",
                 options: [
-                    ["CesiumMan", 'assets/models/CesiumMan.gltf'],
-                    ["Union Troop", 'assets/models/FinalUnion.glb'],
-                    ["Confederate", 'assets/models/confTroop.glb'],
+                    ["Pikachu", 'assets/models/pikachu.glb'],
+                    ["Bowser", 'assets/models/bowser.glb'],
+                    //["CesiumMan", 'assets/models/CesiumMan.gltf'],
+                    //["Union Troop", 'assets/models/FinalUnion.glb'],
+                    //["Confederate", 'assets/models/confTroop.glb'],
                 ]
             }
         ],
