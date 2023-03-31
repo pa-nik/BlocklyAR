@@ -195,7 +195,7 @@ Blockly.defineBlocksWithJsonArray([
     },
     {
         type: "gltf",
-        message0: "GLTF id %1 position %2 rotation %3 source %4 animation %5",
+        message0: "GLTF id %1 position %2 rotation %3 scale %4 source %5 animation %6",
         args0: [
             {    // Beginning of the field variable dropdown
                 "type": "field_variable",
@@ -210,6 +210,11 @@ Blockly.defineBlocksWithJsonArray([
             {
                 type: "input_value",
                 name: "rotation_vector3",
+                align: "RIGHT"
+            },
+            {
+                type: "input_value",
+                name: "scale_vector3",
                 align: "RIGHT"
             },
             {
