@@ -103,7 +103,7 @@ HtmlGenerator['gltf'] = function (block) {
     Blockly.JavaScript.init(Blockly.mainWorkspace)
     let id = Blockly.JavaScript.variableDB_.getName(
         block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-    return `<a-gltf-model look-at="[camera]" id="${id}" project='visAR' ${pos}${rot}${scale}${src}${ani}></a-gltf-model>`;
+    return `<a-gltf-model look-at="[camera]" id="model-${id}" project='visAR' ${pos}${rot}${scale}${src}${ani}></a-gltf-model>`;
 }
 
 HtmlGenerator['variables_get'] = function(block){
