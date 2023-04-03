@@ -117,6 +117,7 @@ Blockly.defineBlocksWithJsonArray([
                     ["Bowser", 'assets/models/bowser.glb'],
                     ["Kirby and Star Rod", 'assets/models/kirby_and_star_rod.glb'],
                     ["Donut", 'assets/models/donut_2.0.glb'],
+                    ["Donut Half", 'assets/models/half_donut.glb'],
                     //["CesiumMan", 'assets/models/CesiumMan.gltf'],
                     //["Union Troop", 'assets/models/FinalUnion.glb'],
                     //["Confederate", 'assets/models/confTroop.glb'],
