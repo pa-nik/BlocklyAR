@@ -99,7 +99,7 @@ HtmlGenerator['gltf'] = function (block) {
     if(ani !=="") ani = `${ani}`;
     if(pos !=="") pos  = `position = '${pos}'`;
     if(rot !=="") rot  = `rotation = '${rot}'`;
-    if(scale !=="") rot  = `scale = '${scale}'`;
+    if(scale !=="") scale  = `scale = '${scale}'`;
     Blockly.JavaScript.init(Blockly.mainWorkspace)
     let id = Blockly.JavaScript.variableDB_.getName(
         block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
