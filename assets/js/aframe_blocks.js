@@ -161,6 +161,7 @@ Blockly.defineBlocksWithJsonArray([
                     //[{src: "assets/markers/pattern-pos5.png", width: 30, height: 30}, 'assets/patterns/pattern-pos5.patt'],
                     //[{src: "assets/markers/pattern-pos6.png", width: 30, height: 30}, 'assets/patterns/pattern-pos6.patt'],
                     [{src: "assets/markers/pattern-kirby_logo_b45.png", width: 30, height: 30}, 'assets/patterns/pattern-kirby_logo_b45.patt'],
+                    [{src: "assets/markers/pattern-spade.png", width: 30, height: 30}, 'assets/patterns/pattern-spade.patt'],
                 ]
             }
         ],
