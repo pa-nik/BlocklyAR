@@ -123,6 +123,7 @@ Blockly.defineBlocksWithJsonArray([
                     ["Donut Half", 'assets/models/half_donut.glb'],
                     ["Fish", 'assets/models/fish.glb'],
                     ["Flame", 'assets/models/flame_test_2.glb'],
+                    ["Flower", 'assets/models/colored_flower.glb'],
                     ["Halloween Pumpkin", 'assets/models/halloween_pumpkin.glb'],
                     ["Kirby and Star Rod", 'assets/models/kirby_and_star_rod.glb'],
                     ["Monster Eye", 'assets/models/monster_eye.glb'],
