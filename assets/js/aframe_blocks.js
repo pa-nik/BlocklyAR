@@ -128,6 +128,7 @@ Blockly.defineBlocksWithJsonArray([
                     ["Kirby and Star Rod", 'assets/models/kirby_and_star_rod.glb'],
                     ["Mazda RX7", 'assets/models/mazda_rx7_stylised.glb'],
                     ["Monster Eye", 'assets/models/monster_eye.glb'],
+                    ["Skull", 'assets/models/skull.glb'],
                     ["Speaker Wall", 'assets/models/technival_speakers_wall.glb'],
                     ["Wall-E Plant Boot", 'assets/models/wall-e_plant_boot.glb'],
                     ["Water Cup", 'assets/models/water_cup.glb'],
