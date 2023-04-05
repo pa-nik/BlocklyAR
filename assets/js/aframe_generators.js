@@ -91,6 +91,7 @@ HtmlGenerator['animation-mixer'] = function (block) {
 };
 
 HtmlGenerator['gltf'] = function (block) {
+    let visible = block.getFieldValue('VISIBLE').toLowerCase();;
     let pos = HtmlGenerator.valueToCode(block,'position_vector3', Blockly.JavaScript.ORDER_ATOMIC);
     let rot = HtmlGenerator.valueToCode(block,'rotation_vector3', Blockly.JavaScript.ORDER_ATOMIC);
     let scale = HtmlGenerator.valueToCode(block,'scale_vector3', Blockly.JavaScript.ORDER_ATOMIC);
@@ -103,7 +104,7 @@ HtmlGenerator['gltf'] = function (block) {
     Blockly.JavaScript.init(Blockly.mainWorkspace)
     let id = Blockly.JavaScript.variableDB_.getName(
         block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-    return `<a-gltf-model look-at="[camera]" id="model-${id}" project='visAR' ${pos}${rot}${scale}${src}${ani}></a-gltf-model>`;
+    return `<a-gltf-model look-at="[camera]" id="model-${id}" visible='${visible}' project='visAR' ${pos}${rot}${scale}${src}${ani}></a-gltf-model>`;
 }
 
 HtmlGenerator['variables_get'] = function(block){

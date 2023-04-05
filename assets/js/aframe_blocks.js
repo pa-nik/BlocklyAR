@@ -212,13 +212,19 @@ Blockly.defineBlocksWithJsonArray([
     },
     {
         type: "gltf",
-        message0: "model %1 position %2 rotation %3 scale %4 source %5 animation %6",
+        message0: "model %1 visible %2 position %3 rotation %4 scale %5 source %6 animation %7",
         args0: [
             {    // Beginning of the field variable dropdown
                 "type": "field_variable",
                 "name": "VAR",    // Static name of the field
                 "variable": "item"    // Given at runtime
             },
+            {
+                type: "field_checkbox",
+                name: "VISIBLE",
+                checked: true,
+                align: "RIGHT"
+            }, 
             {
                 type: "input_value",
                 name: "position_vector3",
