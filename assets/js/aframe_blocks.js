@@ -126,6 +126,7 @@ Blockly.defineBlocksWithJsonArray([
                     ["Flower", 'assets/models/colored_flower.glb'],
                     ["Halloween Pumpkin", 'assets/models/halloween_pumpkin.glb'],
                     ["Kirby and Star Rod", 'assets/models/kirby_and_star_rod.glb'],
+                    ["Mazda RX7", 'assets/models/mazda_rx7_stylised.glb'],
                     ["Monster Eye", 'assets/models/monster_eye.glb'],
                     ["Speaker Wall", 'assets/models/technival_speakers_wall.glb'],
                     ["Wall-E Plant Boot", 'assets/models/wall-e_plant_boot.glb'],
