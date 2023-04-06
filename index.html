@@ -41,7 +41,6 @@
 
 <script>
     const connectButton = document.getElementById ('connect-button');
-    var initModelScale = null;
     
     //////////////////////////////// Web Serial //////////////////////////////
     let reader;
@@ -55,6 +54,9 @@
         console.log(port);
         console.log(port.getInfo());
         connectButton.innerText = '🔌 Disconnect';
+        
+        var initModelScale = null;
+        var initModelPosY = null;
 
         const textDecoder = new TextDecoderStream();
         readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
@@ -111,6 +113,25 @@
                                 model_scale.y = 
                                 model_scale.z = modelScale;
                                 //model.setAttribute('scale', {x: modelScale, y: modelScale, z: modelScale});
+                            }
+                        }
+                        else if(kv[0] == 'y') {
+                            if(kv[1] >= 0 && kv[1] <= 1024) {
+                                const model_position = model.getAttribute('position');
+                                const model_scale = model.getAttribute('scale');
+
+                                if(initModelPosY == null) {
+                                    initModelPosY = model_position.y;
+                                    //console.log('set initModelPosY = ' + initModelPosY);
+                                }
+                                const input = document.getElementById("position-y");
+                                
+                                var modelPosOffsetY = kv[1] * model_scale.y;
+                                input.textContent = modelPosOffsetY.toFixed(2); 
+                                //console.log('position y offset = ' + modelPosOffsetY);  
+
+                                model_position.y = initModelPosY + modelPosOffsetY; 
+                                //console.log('position y = ' + model_position.y); 
                             }
                         }
                     }
@@ -210,6 +231,7 @@
                 <br><br>
                 <b>visible:</b> <span id="visible-val">true</span><br>
                 <b>scale multiplier:</b> <span id="scale-xyz">1.0</span><br>
+                <b>position y offset:</b> <span id="position-y">0.0</span><br>
             </div>
         </div>
         <div class="col-8">
