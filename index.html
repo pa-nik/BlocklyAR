@@ -56,6 +56,7 @@
         connectButton.innerText = '🔌 Disconnect';
         
         var initModelScale = null;
+        var initModelPosX = null;
         var initModelPosY = null;
 
         const textDecoder = new TextDecoderStream();
@@ -115,24 +116,39 @@
                                 //model.setAttribute('scale', {x: modelScale, y: modelScale, z: modelScale});
                             }
                         }
-                        else if(kv[0] == 'y') {
-                            if(kv[1] >= 0 && kv[1] <= 1024) {
-                                const model_position = model.getAttribute('position');
-                                const model_scale = model.getAttribute('scale');
+                        else if(kv[0] == 'x') {
+                            const model_position = model.getAttribute('position');
+                            const model_scale = model.getAttribute('scale');
 
-                                if(initModelPosY == null) {
-                                    initModelPosY = model_position.y;
-                                    //console.log('set initModelPosY = ' + initModelPosY);
-                                }
-                                const input = document.getElementById("position-y");
-                                
-                                var modelPosOffsetY = kv[1] * model_scale.y;
-                                input.textContent = modelPosOffsetY.toFixed(2); 
-                                //console.log('position y offset = ' + modelPosOffsetY);  
-
-                                model_position.y = initModelPosY + modelPosOffsetY; 
-                                //console.log('position y = ' + model_position.y); 
+                            if(initModelPosX == null) {
+                                initModelPosX = model_position.x;
+                                //console.log('set initModelPosX = ' + initModelPosX);
                             }
+                            const input = document.getElementById("position-x");
+                            
+                            var modelPosOffsetX = kv[1] * model_scale.x;
+                            input.textContent = modelPosOffsetX.toFixed(2); 
+                            //console.log('position x offset = ' + modelPosOffsetX);  
+
+                            model_position.x = initModelPosX + modelPosOffsetX; 
+                            //console.log('position x = ' + model_position.x); 
+                        }
+                        else if(kv[0] == 'y') {
+                            const model_position = model.getAttribute('position');
+                            const model_scale = model.getAttribute('scale');
+
+                            if(initModelPosY == null) {
+                                initModelPosY = model_position.y;
+                                //console.log('set initModelPosY = ' + initModelPosY);
+                            }
+                            const input = document.getElementById("position-y");
+                            
+                            var modelPosOffsetY = kv[1] * model_scale.y;
+                            input.textContent = modelPosOffsetY.toFixed(2); 
+                            //console.log('position y offset = ' + modelPosOffsetY);  
+
+                            model_position.y = initModelPosY + modelPosOffsetY; 
+                            //console.log('position y = ' + model_position.y); 
                         }
                     }
                 }
@@ -231,6 +247,7 @@
                 <br><br>
                 <b>visible:</b> <span id="visible-val">true</span><br>
                 <b>scale multiplier:</b> <span id="scale-xyz">1.0</span><br>
+                <b>position x offset:</b> <span id="position-x">0.0</span><br>
                 <b>position y offset:</b> <span id="position-y">0.0</span><br>
             </div>
         </div>
